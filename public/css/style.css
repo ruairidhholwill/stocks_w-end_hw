@@ -1,0 +1,52 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Futura';
+    color: #121212;
+  }
+  
+  header {
+    width: 100%;
+    padding: 0 1em;
+    position: fixed;
+    top: 0;
+    background-color: #fffaed;
+    border-bottom: 1px solid #523059;
+  }
+
+  #stocks-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stock-detail {
+    border: black solid 1px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: white;
+    margin: 15px;
+  }
+
+  .stock-detail h1, h2, h3, h4, img {
+    margin-left: 10px;
+  }
+
+  /* .stock-detail:hover {
+      cursor: pointer;
+  } */
+
+
+  select{
+      width: 175px;
+      margin-left: 10px;
+  }
+  
+ 

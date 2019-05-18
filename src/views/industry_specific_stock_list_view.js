@@ -2,38 +2,33 @@ const PubSub = require('../helpers/pub_sub.js')
 const Stocks = require('../models/stocks.js')
 const StockDisplayView = require('../views/stock_display_view.js')
 
-const StockListView = function (container) {
+const StockListViewIndustry = function (container) {
     this.container = container
 }
 
-StockListView.prototype.bindEvents = function () {
-    PubSub.subscribe('Stocks:stocks-ready', (event) => {
+StockListViewIndustry.prototype.bindEvents = function () {
+    PubSub.subscribe('Stocks:stocks-ready-industry-specific', (event) => {
         this.clearList();
         this.renderStockDetailViews(event.detail);
     })
-
-//     this.container.addEventListener('click', (event) => {
-//         const selectedIndex = event.target.value;
-//        console.log("Hello World!");
-//     });
 }
 
-StockListView.prototype.clearList = function () {
+StockListViewIndustry.prototype.clearList = function () {
     this.container.innerHTML = '';
 }
 
-StockListView.prototype.renderStockDetailViews = function (stocks) {
-    Object.entries(stocks).forEach((stock) => {
+StockListViewIndustry.prototype.renderStockDetailViews = function (stocks) {
+    Object.values(stocks).forEach((stock) => {
         const stockItem = this.createStockListItem(stock);
         this.container.appendChild(stockItem);
     });
 };
 
   
-StockListView.prototype.createStockListItem = function (stock) {
+StockListViewIndustry.prototype.createStockListItem = function (stock) {
     const stockDetailView = new StockDisplayView();
     const stockDetail = stockDetailView.createStockDetail(stock);
     return stockDetail;
 };
 
-module.exports = StockListView;
+module.exports = StockListViewIndustry;
